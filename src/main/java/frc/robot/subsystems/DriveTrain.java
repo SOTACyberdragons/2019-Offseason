@@ -32,13 +32,13 @@ public class DriveTrain extends Subsystem {
 	public final double encoderMaxSpeed = 33000;
 
 	public WPI_TalonSRX leftEmployee1; //THis is LOWKEY RACISM - stop plz
-	public WPI_TalonSRX leftBoss1;
+	public WPI_TalonSRX leftBoss;
 	public WPI_TalonSRX rightEmployee1;
-    public WPI_TalonSRX rightBoss1;
+    public WPI_TalonSRX rightBoss;
     public WPI_TalonSRX leftEmployee2; //THis is LOWKEY RACISM - stop plz
 	public WPI_TalonSRX rightEmployee2;
     
-    private LimeLight  limelight = new LimeLight();
+    //private LimeLight  limelight = new LimeLight();
 	
 	private DifferentialDrive drive;
 	public DifferentialDrive drive1;
@@ -47,11 +47,14 @@ public class DriveTrain extends Subsystem {
 
 
 	public DriveTrain() {
-
-		leftEmployee = new WPI_TalonSRX(RobotMap.LEFT_DRIVE_MOTOR);
-		rightEmployee = new WPI_TalonSRX(RobotMap.RIGHT_DRIVE_MOTOR);
+		
 		leftBoss = new WPI_TalonSRX(RobotMap.LEFT_DRIVE_FOLLOW_MOTOR);
+		leftEmployee1 = new WPI_TalonSRX(RobotMap.LEFT_DRIVE_MOTOR);
+		leftEmployee2 = new WPI_TalonSRX(RobotMap.LEFT_DRIVE_MOTOR);
 		rightBoss = new WPI_TalonSRX(RobotMap.RIGHT_DRIVE_FOLLOW_MOTOR);
+		rightEmployee1 = new WPI_TalonSRX(RobotMap.RIGHT_DRIVE_MOTOR);
+		rightEmployee1 = new WPI_TalonSRX(RobotMap.RIGHT_DRIVE_MOTOR);
+		
 		
 		//WPI_TalonSRX leftMotor2 = leftMotor;
 		drive = new DifferentialDrive(leftBoss, rightBoss);
@@ -67,8 +70,10 @@ public class DriveTrain extends Subsystem {
 		rightBoss.setSensorPhase(false);
 		rightBoss.setInverted(false); //set to false
 		
-		leftEmployee.follow(leftBoss);
-		rightEmployee.follow(rightBoss);
+		leftEmployee1.follow(leftBoss);
+		leftEmployee2.follow(leftBoss);
+		rightEmployee1.follow(rightBoss);
+		rightEmployee2.follow(rightBoss);
 	}
 	
 	
